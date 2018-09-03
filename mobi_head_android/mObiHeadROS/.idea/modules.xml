@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mObiHeadROS.iml" filepath="$PROJECT_DIR$/mObiHeadROS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobiheadros-app/mobiheadros-app.iml" filepath="$PROJECT_DIR$/mobiheadros-app/mobiheadros-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/rosandroid-core/rosandroid-core.iml" filepath="$PROJECT_DIR$/libraries/rosandroid-core/rosandroid-core.iml" />
+    </modules>
+  </component>
+</project>

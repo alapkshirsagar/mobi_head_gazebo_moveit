@@ -1,0 +1,62 @@
+<launch>
+  <arg name="dynamixel_namespace" value="dynamixel_controller" />
+
+  <!-- Load the URDF/Xacro model of our robot -->
+  <param
+    name="robot_description"
+    textfile="$(find mobi_head)/urdf/robots/mobi_head_urdf.URDF" />
+
+    
+  <!-- Publish the robot state -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+    <param name="publish_frequency" value="50.0"/>
+  </node>
+  
+  <!-- Start tf2_web_republisher and ros_api for displaying the robot model in the dashboard -->
+  <node pkg="tf2_web_republisher" type="tf2_web_republisher" name="tf2_web_republisher" output="screen" />
+  <node pkg="rosapi" type="rosapi_node" name="rosapi_node" output="screen" />
+  
+
+  <!-- Start the Dynamixel low-level driver manager with parameters -->
+  <node ns="$(arg dynamixel_namespace)" name="dynamixel_manager" pkg="dynamixel_controllers"
+    type="controller_manager.py" required="true" output="screen">
+    <rosparam>
+      namespace: dxl_manager
+      serial_ports:
+        dynamixel_mx28:
+          port_name: "/dev/ttyUSB0"
+          baud_rate: 57142
+          min_motor_id: 0
+          max_motor_id: 3
+          update_rate: 50
+    </rosparam>
+  </node>
+
+  <!-- Load joint controller configuration from YAML file to parameter server -->
+  <rosparam ns="$(arg dynamixel_namespace)" file="$(find mobi_head)/params/dynamixel_params.yaml" command="load"/>
+
+  <!-- Start joint controllers -->
+  <node ns="$(arg dynamixel_namespace)" name="dynamixel_controller_spawner_mx28" pkg="dynamixel_controllers"
+  type="controller_spawner.py"
+    args="--manager=dxl_manager
+          --port=dynamixel_mx28
+          --type=simple
+    neck_pan_controller
+    neck_tilt_controller
+    head_tilt_controller
+    head_roll_controller"
+    output="screen" />
+
+  
+  <!-- Start the Dynamixel Joint States Publisher -->
+  <node ns="$(arg dynamixel_namespace)" name="dynamixel_joint_states_publisher" pkg="mobi_head" type="dynamixel_joint_state_publisher.py" output="screen" />
+
+  <!-- Start all Dynamixels in the relaxed state -->
+  <!--<node ns="$(arg dynamixel_namespace)" pkg="mobi_head" type="relax_all_servos.py" name="relax_all_servos" output="screen" />-->
+  
+  <!-- Start trajectory executer -->
+  <!--<node ns="$(arg dynamixel_namespace)" pkg="mobi_head" type="execute_trajectory.py" name="execute_trajectory" output="screen" />-->
+  <!--<node ns="$(arg dynamixel_namespace)" pkg="mobi_head" type="test_trajectory.py" name="test_trajectory" output="screen" />-->
+  <node ns="$(arg dynamixel_namespace)" pkg="mobi_head" type="mobi_head_motion_engine.py" name="mobi_head_motion_engine" output="screen" />
+ 
+</launch>

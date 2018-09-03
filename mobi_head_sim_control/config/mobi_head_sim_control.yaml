@@ -1,0 +1,48 @@
+mobi_head_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - Head_Roll_Joint
+     - Head_Tilt_Joint
+     - Neck_Pan_Joint
+     - Neck_Tilt_Joint 
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      Neck_Pan_Joint: {trajectory: 0.1, goal: 0.1}
+      Neck_Tilt_Joint: {trajectory: 0.1, goal: 0.1}
+      Head_Tilt_Joint: {trajectory: 0.1, goal: 0.1}
+      Head_Roll_Joint: {trajectory: 0.1, goal: 0.1}
+
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+
+  # # Position Controllers ---------------------------------------
+  # Neck_Pan_Joint:
+  #   type: position_controllers/JointTrajectoryController
+  #   joint: Neck_Pan_Joint
+  #   pid: {p: 100.0, i: 0.01, d: 10.0}
+  #
+  # # Position Controllers ---------------------------------------
+  # Neck_Tilt_Joint_position_controller:
+  #   type: position_controllers/JointTrajectoryController
+  #   joint: Neck_Tilt_Joint
+  #   pid: {p: 100.0, i: 0.01, d: 10.0}
+  #
+  # # Position Controllers ---------------------------------------
+  # Head_Tilt_Joint_position_controller:
+  #   type: position_controllers/JointTrajectoryController
+  #   joint: Head_Tilt_Joint
+  #   pid: {p: 100.0, i: 0.01, d: 10.0}
+  #
+  # # Position Controllers ---------------------------------------
+  # Head_Roll_Joint_position_controller:
+  #   type: position_controllers/JointTrajectoryController
+  #   joint: Head_Roll_Joint
+  #   pid: {p: 100.0, i: 0.01, d: 10.0}
+  #
+  # head_trajectory_controller:
+  #    type: "position_controllers/JointTrajectoryController"
+  #    joints:
+  #      - Neck_Pan_Joint
+  #      - Neck_Tilt_Joint

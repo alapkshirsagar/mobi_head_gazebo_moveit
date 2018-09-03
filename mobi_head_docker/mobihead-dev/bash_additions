@@ -1,0 +1,11 @@
+export MOBIHEAD_DIR=$HOME/code/catkin_ws
+
+catkin_setup=$MOBIHEAD_DIR/devel/setup.bash
+
+if [ ! -f $catkin_setup ]; then
+	echo "catkin setup files are not found, re-compiling"
+	. mobihead-build
+fi  
+
+source $catkin_setup
+cat $HOME/README

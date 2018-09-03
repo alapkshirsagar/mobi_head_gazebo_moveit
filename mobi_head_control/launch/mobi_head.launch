@@ -1,0 +1,13 @@
+<launch>
+  <group>
+    <!--<arg name="dynamixel_namespace" value="dynamixel_controller" />-->
+    <!--
+    <include ns="$(arg dynamixel_namespace)" file="$(find mobi_head)/launch/start_mobi_head.launch" />
+    <include ns="$(arg dynamixel_namespace)" file="$(find mobi_head)/launch/start_meta_controller.launch" />
+    <include ns="$(arg dynamixel_namespace)" file="$(find mobi_head)/launch/start_comm.launch" />
+    -->
+    <include file="$(find mobi_head)/launch/start_mobi_head.launch" />
+    <include file="$(find mobi_head)/launch/start_meta_controller.launch" />
+    <include file="$(find mobi_head)/launch/start_comm.launch" />
+  </group>
+</launch>

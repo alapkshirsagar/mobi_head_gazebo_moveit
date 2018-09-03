@@ -1,0 +1,19 @@
+<launch>
+  <arg name="dynamixel_namespace" value="dynamixel_controller" />
+  
+  <!-- Start meta controllers -->
+  
+  <rosparam ns="$(arg dynamixel_namespace)" file="$(find mobi_head)/params/head_trajectory_controller.yaml" command="load"/>
+  
+  <node ns="$(arg dynamixel_namespace)" name="controller_spawner_meta" pkg="dynamixel_controllers" type="controller_spawner.py"
+    args="--manager=dxl_manager
+          --port=dynamixel_mx28
+          --type=meta
+      head_controller
+      neck_pan_controller
+      neck_tilt_controller
+      head_tilt_controller
+      head_roll_controller"
+      output="screen"/>
+  
+</launch>

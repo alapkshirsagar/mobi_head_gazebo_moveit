@@ -1,0 +1,53 @@
+#!/bin/bash
+# Docker helper script. Requires nvidia-docker v1
+# Copyright (C) 2017- Cetin Mericli
+
+# convert image name to a valid container name
+orig=$2
+repl=_
+NAME="${orig/:/$repl}"
+orig=$NAME
+NAME="${orig//\//$repl}"
+
+# check number of arguments and display usage
+
+
+case "$1" in
+	start)
+		echo "launching docker image $2 with name $NAME"
+		docker stop $NAME > /dev/null
+		docker rm $NAME > /dev/null
+		xhost + > /dev/null
+		nvidia-docker run -d -it --privileged --log-driver=syslog --net=host --env="COLUMNS" --env="ROWS" --env="QT_GRAPHICSSYSTEM=opengl" --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" -v "/etc/localtime:/etc/localtime:ro" `echo $3` --name $NAME $2
+		;;
+	
+	stop)
+		echo "stopping docker container $NAME"
+		docker stop $NAME > /dev/null
+		docker rm $NAME > /dev/null
+		docker stop $NAME
+		;;
+
+	exec)
+		echo "executing command $3 in container $NAME"
+		docker exec -it $NAME $3
+		;;
+	run)
+		echo "running command $3 in image $2"
+		docker stop $NAME > /dev/null
+		docker rm $NAME > /dev/null
+		xhost + > /dev/null
+		nvidia-docker run -it --privileged --log-driver=syslog --net=host --env="COLUMNS" --env="ROWS" --env="QT_GRAPHICSSYSTEM=opengl" --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" -v "/etc/localtime:/etc/localtime:ro"  `echo $4` --name $NAME $2
+		;;
+	bash)
+		nvidia-docker exec -it --env="COLUMNS" --env="ROWS" $NAME bash
+		;;
+	*)
+		echo "Usage: dockerx {start|stop|exec|run|bash} <image> [<command>] [<arguments>]"
+		echo "Examples: "
+		echo " dockerx start myimage \"-v /home/myuser/data:/home/dev/data:rw\""
+		echo " dockerx stop myimage"
+		echo " dockerx exec myimage iperf"
+		echo " dockerx run myimage iperf \"-v /var/tmp:/var/tmp:rw\""
+		echo " dockerx bash myimage"
+	esac

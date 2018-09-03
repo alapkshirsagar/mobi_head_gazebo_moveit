@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: mobi_head
+    relative_path: urdf/robots/mobi_head_urdf.URDF
+  SRDF:
+    relative_path: config/mobi_head_urdf.srdf
+  CONFIG:
+    generated_timestamp: 1436585194

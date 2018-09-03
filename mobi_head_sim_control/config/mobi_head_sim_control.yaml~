@@ -1,0 +1,36 @@
+mobi_head_sim:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+  # Position Controllers ---------------------------------------
+  Neck_Pan_Joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Neck_Pan_Joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  # Position Controllers ---------------------------------------
+  Neck_Tilt_Joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Neck_Tilt_Joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  # Position Controllers ---------------------------------------
+  Head_Tilt_Joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Head_Tilt_Joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  # Position Controllers ---------------------------------------
+  Head_Roll_Joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Head_Roll_Joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  head_trajectory_controller:
+     type: "position_controllers/JointTrajectoryController"
+     joints:
+       - Neck_Pan_Joint_position_controller
+       - Neck_Tilt_Joint
+

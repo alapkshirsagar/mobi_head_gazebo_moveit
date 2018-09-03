@@ -1,0 +1,38 @@
+# -*- sh -*- # this line enables sh-mode in emacs
+
+# turn off gnu splash screen
+startup_message off
+
+# turn off visual (epileptic) bell
+vbell off
+
+# fix scrollback buffer
+#termcapinfo xterm* ti@:te@
+
+# set shell
+shell -"/bin/bash"
+
+# set multiuser
+multiuser on
+
+# disable flow control
+defflow off
+
+################################################################################
+# keyboard bindings
+
+# binds ctrl+left and ctrl+right to :prev and :next
+bindkey ^[[1;5D prev
+bindkey ^[[1;5C next
+
+################################################################################
+# add taskbar-like line to bottom showing hostname screen tabs and date/time
+hardstatus alwayslastline
+hardstatus string '%{= kg}[%{G}Batt Voltage:%?%3`%:%{R}%X%?%{g}]%= [%{G}Load Avg(1m,5m,15m):%{w}%l%{g}]'
+caption always '%{= kg}[%{G}%H%{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%{g}%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+
+defscrollback 20000
+
+# for mouse scroll to work
+termcapinfo xterm* ti@:te@
+termcapinfo xterm* 'hs:ts=\E]2;:fs=07:ds=\E]2;screen07'

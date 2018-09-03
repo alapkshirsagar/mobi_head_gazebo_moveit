@@ -1,0 +1,5 @@
+<launch>
+  
+  <node pkg="rosapi" type="rosapi_node" name="rosapi_node" output="screen" />
+  
+</launch>

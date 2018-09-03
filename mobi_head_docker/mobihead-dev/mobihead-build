@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd $MOBIHEAD_DIR
+
+catkin_make
+
+source $MOBIHEAD_DIR/devel/setup.bash

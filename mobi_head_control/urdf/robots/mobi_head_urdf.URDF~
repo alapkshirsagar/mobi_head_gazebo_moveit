@@ -1,0 +1,321 @@
+<robot
+  name="mobi_head_urdf">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.125"
+        rpy="0 0 0" />
+      <mass
+        value="10.0" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.125"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.125"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ======================================================== -->
+
+  <link
+    name="Neck_Pan_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.09" />
+ 	<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/Neck_Pan_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.1569 0.1569 0.1569 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/Neck_Pan_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Neck_Pan_Joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.125"
+      rpy="0 1.5708 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Neck_Pan_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3.1"
+      velocity="3.1416" />
+  </joint>
+
+  <!-- ======================================================== -->
+
+  <link
+    name="Neck_Tilt_Link">
+    <inertial>
+      <origin
+        xyz="0.048937 -0.02 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+ 	<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/Neck_Tilt_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/Neck_Tilt_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Neck_Tilt_Joint"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.02"
+      rpy="-1.5708 0 3.1416" />
+    <parent
+      link="Neck_Pan_Link" />
+    <child
+      link="Neck_Tilt_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3.1"
+      velocity="3.14159265" />
+  </joint>
+  <transmission name="Neck_Tilt_Transmission">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="Neck_Tilt_Joint">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+     </joint>
+    <actuator name="neck_tilt_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- ======================================================== -->
+
+  <link
+    name="Head_Tilt_Link">
+    <inertial>
+      <origin
+        xyz="-0.018556 -0.010813 -0.020532"
+        rpy="0 0 0" />
+      <mass
+        value="0.18" />
+ 	<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/Head_Tilt_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.1569 0.1569 0.1569 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/Head_Tilt_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Head_Tilt_Joint"
+    type="revolute">
+    <origin
+      xyz="0.1 0 0"
+      rpy="-1.5708 -1.5615 -1.1169E-13" />
+    <parent
+      link="Neck_Tilt_Link" />
+    <child
+      link="Head_Tilt_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3.1"
+      velocity="3.14159265" />
+  </joint>
+
+  <!-- ======================================================== -->
+
+  <link
+    name="Head_Roll_Link">
+    <inertial>
+      <origin
+        xyz="2.235E-09 0.00062838 0.0046157"
+        rpy="0 0 0" />
+      <mass
+        value="0.3" />
+ 	<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 3.14159265 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/Head_Roll_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 3.14159265 0" />
+      <geometry>
+        <mesh
+          filename="package://mobi_head/urdf/meshes/Head_Roll_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Head_Roll_Joint"
+    type="revolute">
+    <origin
+      xyz="-0.06285 0 -0.0205"
+      rpy="3.1416 -1.5708 0" />
+    <parent
+      link="Head_Tilt_Link" />
+    <child
+      link="Head_Roll_Link" />
+    <axis
+      xyz="0 -0.0093137 -0.99996" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="3.1"
+      velocity="3.14159265" />
+  </joint>
+
+  <!-- ======================================================== -->
+
+  <link
+    name="Screen_Link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="0.001" />
+ 	<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 3.14159265 1.5708" />
+      <geometry>
+        <box size="0.09 0.15 0.001"/>
+      </geometry>
+      <material
+        name="">
+          <texture filename="package://mobi_head/urdf/mObi_neutral_expression_texture.png" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 3.14159265 1.5708" />
+      <geometry>
+        <box size="0.09 0.15 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Screen_Joint"
+    type="fixed">
+    <origin
+      xyz="0.0 0.0 -0.01"
+      rpy="0 0 0" />
+    <parent
+      link="Head_Roll_Link" />
+    <child
+      link="Screen_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <gazebo>
+     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/mobi_head_sim</robotNamespace>
+     </plugin>
+  </gazebo>
+
+</robot>

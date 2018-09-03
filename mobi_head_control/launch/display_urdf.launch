@@ -1,0 +1,32 @@
+<launch>
+  <arg
+    name="model" />
+  <arg
+    name="gui"
+    default="True" />
+  <param
+    name="robot_description"
+    textfile="$(find mobi_head)/urdf/robots/mobi_head_urdf.URDF" />
+  <param
+    name="use_gui"
+    value="$(arg gui)" />
+  
+  <!-- Publish a static transform between the robot base and the world frame -->
+  
+  <node pkg="tf" type="static_transform_publisher" name="world_base_broadcaster" args="0 0 0.055 0 0 0 /world /base_link 100" />
+  <!--
+  <node
+    name="joint_state_publisher"
+    pkg="joint_state_publisher"
+    type="joint_state_publisher" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="state_publisher" />
+  -->
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find mobi_head)/urdf/urdf.rviz" />
+</launch>

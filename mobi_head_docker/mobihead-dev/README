@@ -1,0 +1,30 @@
+
+
+*******************************************************************************
+*******************************************************************************
+*                                   mObi Head                                 *
+*                         Development Docker Container                        *
+*******************************************************************************
+*******************************************************************************
+
+To compile the code from anywhere in the directory tree, type
+
+. mobihead-build
+
+This will also re-source catkin workspace so mobi_head ROS packages can be 
+found by roslaunch, rosrun, etc. The dot and the space before "mobihead-build" is 
+for running the script in the current shell so that at the end of compilation, 
+re-sourcing catkin_ws/devel/setup.bash updates the environment variables in the 
+current shell.
+
+Once the build is complete, you should be able to launch the software using 
+roslaunch <package name> <launch file>
+
+Example: roslaunch mobi_head_control display_urdf.launch
+
+
+*******************************************************************************
+*******************************************************************************
+
+
+

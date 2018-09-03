@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# credit goes to http://stackoverflow.com/a/246128
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+CUR_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+# This script mounts folders pointed by $MOBIHEAD_CODE and $MOBIHEAD_DATA to ~/code and ~/data inside the container, respectively
+
+
+echo "User ID: ${UID}"
+
+dockerx start mobihead-dev "--user $UID
+						 -v $MOBIHEAD_CODE/mobi_head/mobi_head_control:/home/mobihead/code/catkin_ws/src/mobi_head_control:rw
+						 -v $MOBIHEAD_CODE/mobi_head/mobi_head_moveit:/home/mobihead/code/catkin_ws/src/mobi_head_moveit:rw 
+						 -v $MOBIHEAD_CODE/mobi_head/mobi_head_dashboard:/home/mobihead/code/mobi_head_dashboard:rw 
+						 -v $MOBIHEAD_CODE/mobi_head/mobi_head_android:/home/mobihead/code/mobi_head_android:rw 
+						 -v $MOBIHEAD_DATA:/home/mobihead/data:rw"

@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find mobi_head_gazebo)/launch/mobi_head_world.launch"/>
+  <include file="$(find mobi_head_moveit)/launch/demo.launch"/>
+</launch>

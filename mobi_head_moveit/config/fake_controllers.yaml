@@ -1,0 +1,7 @@
+controller_list:
+  - name: fake_mobi_head_planning_group_controller
+    joints:
+      - Neck_Pan_Joint
+      - Neck_Tilt_Joint
+      - Head_Tilt_Joint
+      - Head_Roll_Joint

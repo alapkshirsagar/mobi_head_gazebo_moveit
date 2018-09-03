@@ -1,0 +1,356 @@
+<html>
+<head>
+  <title>mObi Head Control Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="style.css">  
+</head>
+<body onload="init()">
+  <ul id="tabs">
+      <li><a href="#" name="#tab1">Manual</a></li>
+      <li><a href="#" name="#tab2">Semi-Autonomous</a></li>
+      <li><a href="#" name="#tab3">Autonomous</a></li>  
+  </ul>
+
+  <div id="content">
+      <div id="tab1">
+          <h3>Manual Control Interface</h3>
+          <table border = 1>
+	  <tr>
+	    <td>
+	      Robot Model
+	      <div id="urdf"></div>
+	    </td>
+	    <td>
+	      Camera Preview
+<<<<<<< HEAD
+	      <div><img id="camera" src="http://128.237.185.51:8080/stream?topic=/camera/decompressed" height=300/></div>
+=======
+	      <div><img id="camera" src="http://128.237.198.3:8080/stream?topic=/camera/decompressed" height=300/></div>
+>>>>>>> expressions-and-comments
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      Behavior Control
+	      <div>
+		<div>
+		<button style="width:80" onclick="publish('neutral')">Neutral</button>
+		<button style="width:80" onclick="publish('surprised')">Surprised</button>
+		</div>
+		<div>
+		<button style="width:80" onclick="publish('happy')">Happy</button>
+		<button style="width:80" onclick="publish('sad')">Sad</button>
+		</div>
+		<div>
+		<button style="width:80" onclick="publish('angry')">Angry</button>
+		<button style="width:80; background-color: #cccccc" onclick="publish('inlove')">In Love</button>
+		</div>
+		<div>
+		<button style="width:80; background-color: #cccccc" onclick="publish('shy')">Shy</button>
+		<button style="width:80; background-color: #cccccc" onclick="publish('blink')">Blink</button>
+		</div>
+		<div>
+		<button style="width:80; background-color: #cccccc" onclick="publish('yes')">Yes</button>
+		<button style="width:80; background-color: #cccccc" onclick="publish('no')">No</button>
+		</div>
+		<div>
+		<button style="width:80; background-color: #cccccc" onclick="publish('ok')">OK</button>
+		<button style="width:80; background-color: #cccccc" onclick="publish('sorry')">Sorry</button>
+		</div>
+    <div>
+    <button style="width:80; background-color: #cccccc" onclick="publish('gazetarget1')">Gaze1</button>
+    <button style="width:80; background-color: #cccccc" onclick="publish('gazetarget2')">Gaze2</button>
+    <button style="width:80; background-color: #cccccc" onclick="publish('gazetarget3')">Gaze3</button>
+    <button style="width:80; background-color: #cccccc" onclick="publish('gazetarget4')">Gaze4</button>
+    </div>
+    <div>
+    <button style="width:80; background-color: #cccccc" onclick="publish('gazetarget5')">Gaze5</button>
+    <button style="width:80; background-color: #cccccc" onclick="publish('gazetarget6')">Gaze6</button>
+    <button style="width:80; background-color: #cccccc" onclick="publish('gazetarget7')">Gaze7</button>
+    <button style="width:80; background-color: #cccccc" onclick="publish('gazetarget8')">Gaze8</button>
+    </div>
+    <div>
+    <button style="width:80; background-color: #cccccc" onclick="sayClue('whatsup')">What's up, mObiface?</button>
+    </div>
+	      </div>
+	    </td>
+	    <td valign="top">
+	      Speech
+
+	      <div>
+    Phrase: 
+    <input class="textBox" id="phrase" type="text" maxlength="150" required/>
+    <button onclick="processTextBox()">Say</button>
+
+    <div>
+    <button style="width:80" onclick="sayClue('Intro1')">Intro 1</button>
+    <button style="width:80" onclick="sayClue('Intro2')">Intro 2</button>
+      
+    <button style="width:80; background-color:#a4d8af" onclick="sayClue('Good1')">1-Good</button>
+
+    <button style="width:80; background-color:#ea8f8f" onclick="sayClue('Bad1')">1-Bad</button>
+      </div>
+
+    <div>
+    <button style="width:80; background-color:#a4d8af" onclick="sayClue('Good2')">2-Good</button>
+    
+    <button style="width:80; background-color:#ea8f8f" onclick="sayClue('Bad2')">2-Bad</button>
+   
+    <button style="width:80; background-color:#a4d8af" onclick="sayClue('Good3')">3-Good</button>
+
+    <button style="width:80; background-color:#ea8f8f" onclick="sayClue('Bad3')">3-Bad</button>
+      </div>
+
+    <div>
+    <button style="width:80; background-color:#a4d8af" onclick="sayClue('Good4')">4-Good</button>
+
+    <button style="width:80; background-color:#ea8f8f" onclick="sayClue('Bad4')">4-Bad</button>
+
+    <button style="width:80; background-color:#a4d8af" onclick="sayClue('Good5')">5-Good</button>
+
+    <button style="width:80; background-color:#ea8f8f" onclick="sayClue('Bad5')">5-Bad</button>
+      </div>
+
+    <div>
+    <button style="width:80; background-color:#a4d8af" onclick="sayClue('Good6')">6-Good</button>
+
+    <button style="width:80; background-color:#ea8f8f" onclick="sayClue('Bad6')">6-Bad</button>
+
+    <button style="width:80; background-color:#a4d8af" onclick="sayClue('Good7')">7-Good</button>
+
+    <button style="width:80; background-color:#ea8f8f" onclick="sayClue('Bad7')">7-Bad</button>
+      </div>
+
+        </div>
+
+	    </td>
+	  </tr>
+	</table>
+      </div>
+      <div id="tab2">
+          <h3>Semi-autonomous Control Interface</h3>
+      </div>
+      <div id="tab3">
+          <h3>Autonomous Control Interface</h3>
+      </div>
+  </div>
+  
+  <p id="about">Implemented by Tekin Mericli</p>
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+  <script>
+    function resetTabs(){
+        $("#content > div").hide(); //Hide all content
+        $("#tabs a").attr("id",""); //Reset id's      
+    }
+
+    var myUrl = window.location.href; //get URL
+    var myUrlTab = myUrl.substring(myUrl.indexOf("#")); // For localhost/tabs.html#tab2, myUrlTab = #tab2     
+    var myUrlTabName = myUrlTab.substring(0,4); // For the above example, myUrlTabName = #tab
+
+    (function(){
+        $("#content > div").hide(); // Initially hide all content
+        $("#tabs li:first a").attr("id","current"); // Activate first tab
+        $("#content > div:first").fadeIn(); // Show first tab content
+        
+        $("#tabs a").on("click",function(e) {
+            e.preventDefault();
+            if ($(this).attr("id") == "current"){ //detection for current tab
+             return       
+            }
+            else{             
+            resetTabs();
+            $(this).attr("id","current"); // Activate this
+            $($(this).attr('name')).fadeIn(); // Show content for current tab
+            }
+        });
+
+        for (i = 1; i <= $("#tabs li").length; i++) {
+          if (myUrlTab == myUrlTabName + i) {
+              resetTabs();
+              $("a[name='"+myUrlTab+"']").attr("id","current"); // Activate url tab
+              $(myUrlTab).fadeIn(); // Show url tab content        
+          }
+        }
+    })()
+  </script>
+  
+  <!--
+  <script src="https://static.robotwebtools.org/threejs/current/three.js"></script>
+  <script src="https://static.robotwebtools.org/threejs/current/ColladaLoader.min.js"></script>
+  <script src="https://static.robotwebtools.org/ColladaAnimationCompress/current/ColladaLoader2.min.js"></script>
+  <script src="https://static.robotwebtools.org/threejs/current/STLLoader.min.js"></script>
+  <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+  <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+  <script src="https://static.robotwebtools.org/ros3djs/current/ros3d.min.js"></script>
+  -->
+  <script src="dependencies/three.js"></script>
+  <script src="dependencies/ColladaLoader.min.js"></script>
+  <script src="dependencies/ColladaLoader2.min.js"></script>
+  <script src="dependencies/STLLoader.min.js"></script>
+  <script src="dependencies/eventemitter2.min.js"></script>
+  <script src="dependencies/roslib.js"></script>
+  <script src="dependencies/ros3d.js"></script>
+
+  <script>
+    
+    // Connect to ROS.
+    var ros = new ROSLIB.Ros({
+<<<<<<< HEAD
+      url : 'ws://128.237.185.51:9090'
+=======
+      url : 'ws://128.237.198.3:9090'
+>>>>>>> expressions-and-comments
+    });
+    
+    ros.on('connection', function() {
+      console.log('Connected to websocket server.');
+    });
+
+    ros.on('error', function(error) {
+      console.log('Error connecting to websocket server: ', error);
+    });
+
+    ros.on('close', function() {
+      console.log('Connection to websocket server closed.');
+    });
+    /**
+    * Setup all visualization elements when the page is loaded.
+    */
+    function init() {
+      // Create the main viewer.
+      var viewer = new ROS3D.Viewer({
+      	divID : 'urdf',
+      	width : 300,
+      	height : 300,
+      	background : '#efefef',
+      	antialias : true
+      });
+
+      // Add a grid.
+      viewer.addObject(new ROS3D.Grid());
+
+      // Setup a client to listen to TFs.
+
+      var tfClient = new ROSLIB.TFClient({
+      	ros : ros,
+      	angularThres : 0.01,
+      	transThres : 0.01,
+      	rate : 50.0,
+      	fixedFrame: 'base_link'
+      });
+      
+
+      
+      // Setup the URDF client.
+      var urdfClient = new ROS3D.UrdfClient({
+      	ros : ros,
+      	tfClient : tfClient,
+      	//path : 'http://resources.robotwebtools.org/',
+        //path : 'http://tekin.mericli.com/share/',
+        path : 'http://atlas-robotics.com/share/',
+        rootObject : viewer.scene,
+      	loader : ROS3D.COLLADA_LOADER
+      });
+    }
+
+    // Clue dictionary
+    var cluedict = {
+      'Intro1': "Hi! I’m AD’s personal assistant. Are you looking for AD’s password?",
+      'Intro2': "AD gave me some information about where the symbols are hidden.  I can guide you as you try to find them.", 
+      'Good1': "You’ll find something you’re looking for next to the small teddy bear.",
+      'Good2': "The whiteboard has a clue for you.",
+      'Good3': "Try looking under the green foam.",
+      'Good4': "Chapter 3 contains useful information.",
+      'Good5': "Try looking in the lamp near the desk.",
+      'Good6': "AD often hides things under the table.",
+      'Good7': "Try picking up the phone.",
+      'Bad1': "You’ll find something you’re looking for next to the box of salty crackers.",
+      'Bad2': "The red chair has a clue for you.",
+      'Bad3': "Try looking under the fridge.",
+      'Bad4': "Magazines contain useful information.",
+      'Bad5': "The plant in the green pot may need some water. It may also be able to help you.",
+      'Bad6': "AD often hides things under fake plants.", 
+      'Bad7': "Try looking near the flower painting.",
+      'whatsup': "After all this time, I finally do what I\'m supposed to do."
+    };
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> expressions-and-comments
+    //test dictionary
+
+    var testcluedict = {
+      'Intro1': "This is a test of Intro 1.",
+      'Intro2': "This is a test of Intro 2.", 
+      'Good1': "This is a test of Good Clue 1.",
+      'Good2': "This is a test of Good Clue 2.",
+      'Good3': "This is a test of Good Clue 3.",
+      'Good4': "This is a test of Good Clue 4.",
+      'Good5': "This is a test of Good Clue 5.",
+      'Good6': "This is a test of Good Clue 6.",
+      'Good7': "This is a test of Good Clue 7.",
+      'Bad1': "This is a test of Bad Clue 1.",
+      'Bad2': "This is a test of Bad Clue 2.",
+      'Bad3': "This is a test of Bad Clue 3.",
+      'Bad4': "This is a test of Bad Clue 4.",
+      'Bad5': "This is a test of Bad Clue 5.",
+      'Bad6': "This is a test of Bad Clue 6.", 
+<<<<<<< HEAD
+      'Bad7': "This is a test of Bad Clue 7."
+    };
+    
+=======
+      'Bad7': "This is a test of Bad Clue 7.",
+      'whatsup': "After all this time, I finally do what I\'m supposed to do."
+    };
+
+
+>>>>>>> expressions-and-comments
+    
+    function publish(data)
+    {
+      var topic = new ROSLIB.Topic({
+      	ros : ros,
+      	name : '/mobi_head_command',
+      	messageType : 'std_msgs/String'
+      });
+
+      var cmd = new ROSLIB.Message({
+        data : data
+      });
+      
+      topic.publish(cmd);
+      console.log('published: ', data);
+    }
+    
+    function processTextBox() 
+    {
+      publish(document.getElementById("phrase").value);
+    }
+
+<<<<<<< HEAD
+    
+    
+=======
+>>>>>>> expressions-and-comments
+    function sayClue(clue)
+    {
+      
+      //change to testcluedict when testing
+<<<<<<< HEAD
+
+      publish(testcluedict[clue])
+    }
+
+=======
+>>>>>>> expressions-and-comments
+
+      publish(testcluedict[clue])
+    }
+    
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,10 @@
+controller_list:
+  - name: mobi_head_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - Head_Roll_Joint
+      - Head_Tilt_Joint
+      - Neck_Pan_Joint
+      - Neck_Tilt_Joint
