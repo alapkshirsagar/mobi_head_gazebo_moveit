@@ -104,10 +104,10 @@
   <transmission name="Neck_Pan_Transmission">
      <type>transmission_interface/SimpleTransmission</type>
      <joint name="Neck_Pan_Joint">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
      </joint>
     <actuator name="neck_pan_motor">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
@@ -169,10 +169,10 @@
   <transmission name="Neck_Tilt_Transmission">
      <type>transmission_interface/SimpleTransmission</type>
      <joint name="Neck_Tilt_Joint">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
      </joint>
     <actuator name="neck_tilt_motor">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
@@ -234,10 +234,10 @@
   <transmission name="Head_Tilt_Transmission">
      <type>transmission_interface/SimpleTransmission</type>
      <joint name="Head_Tilt_Joint">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
      </joint>
     <actuator name="head_tilt_motor">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
@@ -299,10 +299,10 @@
   <transmission name="Head_Roll_Transmission">
      <type>transmission_interface/SimpleTransmission</type>
      <joint name="Head_Roll_Joint">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
      </joint>
     <actuator name="head_roll_motor">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>

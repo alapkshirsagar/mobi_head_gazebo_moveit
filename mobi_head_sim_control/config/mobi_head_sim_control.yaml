@@ -4,7 +4,7 @@ mobi_head_controller:
      - Head_Roll_Joint
      - Head_Tilt_Joint
      - Neck_Pan_Joint
-     - Neck_Tilt_Joint 
+     - Neck_Tilt_Joint
   constraints:
       goal_time: 0.6
       stopped_velocity_tolerance: 0.05
